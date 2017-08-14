@@ -379,6 +379,7 @@ sysctl -w net.ipv4.conf.default.send_redirects=0
 sysctl -w net.ipv4.conf.all.accept_redirects=0
 sysctl -w net.ipv4.conf.default.accept_redirects=0
 
+rm -rf /etc/sysctl.conf
 cat >>/etc/sysctl.conf<<EOF
 
 net.ipv4.ip_forward = 1
@@ -392,6 +393,7 @@ net.ipv4.conf.default.accept_redirects = 0
 EOF
 
 #允许防火墙端口
+rm -rf /usr/lib/firewalld/services/pptpd.xml
 cat >>/usr/lib/firewalld/services/pptpd.xml<<EOF
 <?xml version="1.0" encoding="utf-8"?>
 <service>
@@ -401,6 +403,7 @@ cat >>/usr/lib/firewalld/services/pptpd.xml<<EOF
 </service>
 EOF
 
+rm -rf /usr/lib/firewalld/services/l2tpd.xml
 cat >>/usr/lib/firewalld/services/l2tpd.xml<<EOF
 <?xml version="1.0" encoding="utf-8"?>
 <service>
